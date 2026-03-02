@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS devices (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  ip_address VARCHAR(45) NOT NULL UNIQUE,
+  device_type VARCHAR(80) NOT NULL,
+  status ENUM('ativo', 'manutencao', 'inativo') NOT NULL DEFAULT 'ativo',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_devices_status ON devices(status);
